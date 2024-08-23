@@ -35,3 +35,7 @@ Software:
 - "finaldata.csv" --> final normalized data with Rsq and CV values
 
 Expected run-time on a computer: <5 minutes
+
+
+Written by Alan Wong
+Contact: alan.wong@childrens.harvard.edu
