@@ -1,14 +1,15 @@
-# R-Script to combine datasets into one Excel (extracting peak areas), normalize and filter metabos by Rsq and CV; updated Oct 18, 2022
+# # R-Script to combine datasets into one Excel (extracting peak areas), normalize and filter metabos by Rsq and CV; updated Oct 18, 2022
 
 options(scipen = 100) #displays decimals in numeric, NOT sig-figs
 remove(list = ls()) #clean-up environment first
+
 
 library(dplyr) #load dependencies
 library(purrr)
 #library(rmarkdown)
 
 ##### DESCRIPTION:
-#
+# This script functions on R versions 4.1.2 and 4.2.0, and on both MacOS (Catalina) and Windows 10 operating systems
 #
 # How to use:
 # (In top toolbar:) Code > Run Region > Run All
@@ -27,15 +28,21 @@ library(purrr)
 # "normalizationvector_fromtotalpolars.csv" --> normalization factor from metabolites
 # "finaldata.csv" --> final data (normalized to polars) with Rsq and CV values
 #
-# Sample names have to match across all CSVs (so you may have to run the first section of code for your C18 and HILIC runs separately, then combine manually) 
+# Sample names have to match across all CSVs (so you may have to run the first section of code for your C18 and HILIC runs separately, then combine manually)
 #
 #
 #####
 
-print("Where can I find your Tracefinder .csv's?  (e.g.: ~/Documents/MS Data/202201208 (can use quotation marks)")
+print("Where can I find your Tracefinder .csv's?  (e.g.: /Documents/MS Data/202201208 (can use quotation marks)")
 wd <- readline(prompt="Working Directory/Folder:")
-wd <- gsub('[\"]', '', wd)
-setwd(wd) 
+wd <- gsub('[\"]', '', wd) #remove any slashes in the wrong direction
+wd <- gsub('[\\"]', '/', wd) #replace doubled slashes (from Windows to R input) to single slashes
+wd <- gsub('~', '', wd) #remove any tildas at the beginning
+if (substr(wd,nchar(wd), nchar(wd)) != "/") # look if there is a backslash at the end of the working directory input, if not then add one
+{
+  wd = paste(wd,"/",sep="")
+}
+setwd(wd)
 outputpath <- paste(wd, "RscriptOutput/", sep = "") #makes output folder = Rscriptoutput
 if (file.exists(outputpath) == FALSE) #If the output folder doesn't exist, make one
 {
@@ -138,7 +145,7 @@ while(i == 0)
     }
   }
   pool1xs <- rownames(rawdata)[as.logical(rowlogical)]
-  
+
   print(pool1xs)
   yn <- readline(prompt="are these all the pools?  (y/n):")
   if (yn == "y")
@@ -164,7 +171,7 @@ if (length(curve) <3|length(curve)>4)
 
 # 3 point curve:
 while (i == 0)
-{ 
+{
   if (length(curve) == 3)
   {
     print("What text should I use to find dilution injections?  (e.g. pool1x pool033x pool01x) space-separated list")
@@ -178,7 +185,7 @@ while (i == 0)
     colnames(poolmatrix) <- c("curve", "names","RsqDilutionNames")
     print("Pool curve dilutions:")
     print(poolmatrix)
-    
+
     #pull the names of the Rsq dilutions
     rm(rowlogical)
     for (i in 1:length(poolmatrix[,3]))
@@ -192,10 +199,10 @@ while (i == 0)
       }
     }
     Rsqpools <- rownames(rawdata)[as.logical(rowlogical)]
-    
+
     print("Rows to use for Rsq:")
     print(Rsqpools)
-    
+
     input <- readline(prompt="are curve names and values correct? (y/n):")
     if (input == "y")
     {
@@ -210,7 +217,7 @@ while (i == 0)
 
 # 4 point curve:
 while (i == 0)
-{ 
+{
   if (length(curve) == 4)
   {
     print("What text should I use to find dilution injections?  (e.g. pool1x pool033x pool02x pool01x) space-separated list")
@@ -224,7 +231,7 @@ while (i == 0)
     colnames(poolmatrix) <- c("curve", "names","RsqDilutionNames")
     print("Pool curve dilutions:")
     print(poolmatrix)
-    
+
     input <- readline(prompt="are curve names and values correct? (y/n):")
     if (input == "y")
     {
@@ -252,7 +259,7 @@ View(filteredstandards)
 input <- readline(prompt="Filtered Standards are now displayed (prior to dilution normalization.  continue? (y/n):")
 if (input == "y")
 {
-  
+
 } else {
   stop()
 }
@@ -292,7 +299,7 @@ if (sum(norm_vect>1.25|norm_vect<0.75) > 0)
 input <- readline(prompt="Normalization vector based on internal standards is now displayed.  continue? (y/n):")
 if (input == "y")
 {
-  
+
 } else {
   stop()
 }
@@ -316,7 +323,7 @@ View(sampledata_normtostandards)
 input <- readline(prompt="Normalized data is now displayed.  continue? (y/n):")
 if (input == "y")
 {
-  
+
 } else {
   stop()
 }
@@ -405,7 +412,7 @@ View(temp)
 input <- readline(prompt="Data is now displayed with Rsq and CV.  continue? (y/n):")
 if (input == "y")
 {
-  
+
 } else {
   stop()
 }
