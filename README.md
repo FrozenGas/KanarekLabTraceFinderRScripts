@@ -1,4 +1,4 @@
-# KanarekLabTraceFinderRScripts
+# KanarekLab TraceFinder RScript
 
 **Introduction**
 
@@ -11,7 +11,7 @@ Software:
   I recommend using R version 4.2.0
   The R script works well in our lab on both Windows 10 and Mac OS Catalina
 
-**Installation Guide**
+**Installation and Usage Guide**
 1. Download the R Script to your computer
 2. Open the RScript in RStudio
 3. To start the script, click: "Code > Run Region > Run All"
