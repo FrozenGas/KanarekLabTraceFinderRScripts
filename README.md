@@ -16,7 +16,7 @@ Software:
 2. Open the RScript in RStudio
 3. To start the script, click: "Code > Run Region > Run All"
    - This is critical to ensure the user inputs are processed correctly
-4. Once the script begins executing, it will prompt user input in the Console.  See demo folder for an example.
+4. Once the script begins executing, it will prompt user input in the Console.  See demo folder for an example.  The information required from the user is explained at each step, along with an example of the syntax of what is requested.
 
 **Intput**
 1. Tracefinder ".csv" files containing peak areas.  Each ".csv" represents a different metabolite, with individual rows within each file for each sample.
