@@ -23,13 +23,14 @@ Software:
    
 **Outputs**
 .csv outputs (will be in a folder called "RScriptOutput" in the working directory):
-"MSdataframe.csv" --> raw data of combined CSVs from TraceFinder
-"standards.csv" --> CSV of just the isoAAs, QRESS and aminopterin standards
-"normalization_vector_fromstandards.csv" --> mean-centred normalization factor from standards
-"sampledata_normalizedtostandards.csv" --> raw data normalized to normalization factor from standards
-"sampledata_normalized_withRsq_and_CV.csv" --> standard-normalized raw data with Rsq and CV values
-"RsqCVfiltered_normalized_sampledata.csv" --> filtered metabolites based on user-inputted thresholds for Rsq and CV values
-"normalizationvector_fromtotalpolars.csv" --> mean-centred normalization factor from total signal of all metabolites
-"finaldata.csv" --> final normalized data with Rsq and CV values
+
+- "MSdataframe.csv" --> raw data of combined CSVs from TraceFinder
+- "standards.csv" --> CSV of just the isoAAs, QRESS and aminopterin standards
+- "normalization_vector_fromstandards.csv" --> mean-centred normalization factor from standards
+- "sampledata_normalizedtostandards.csv" --> raw data normalized to normalization factor from standards
+- "sampledata_normalized_withRsq_and_CV.csv" --> standard-normalized raw data with Rsq and CV values
+- "RsqCVfiltered_normalized_sampledata.csv" --> filtered metabolites based on user-inputted thresholds for Rsq and CV values
+- "normalizationvector_fromtotalpolars.csv" --> mean-centred normalization factor from total signal of all metabolites
+- "finaldata.csv" --> final normalized data with Rsq and CV values
 
 Expected run-time on a computer: <5 minutes
