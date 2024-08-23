@@ -36,6 +36,9 @@ Software:
 
 Expected run-time on a computer: <5 minutes
 
+**Demo**
+
+The included demo.zip file includes demo ".csv" files from Tracefinder, sample output, as well as the example R console text from a successful run of the code.  
 
 Written by Alan Wong
 Contact: alan.wong@childrens.harvard.edu
