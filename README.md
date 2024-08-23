@@ -22,6 +22,7 @@ Software:
 1. Tracefinder ".csv" files containing peak areas.  Each ".csv" represents a different metabolite, with individual rows within each file for each sample.
    
 **Outputs**
+
 .csv outputs (will be in a folder called "RScriptOutput" in the working directory):
 
 - "MSdataframe.csv" --> raw data of combined CSVs from TraceFinder
